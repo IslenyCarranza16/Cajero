@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" >
+    <title>Cajero DEVF</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+ <style>
+
+    .Encabezado{
+        display:flex;
+        align-items: center;
+        margin: 5%;
+        width: 100%;
+        margin-left: 25%;
+
+    }
+    .imagenEncabezado{
+        width: 10%;
+        margin: 2%;
+    }
+
+    .tituloPrincipal{
+        width: 90%;
+        margin: 2%;
+    }
+    #formularioEntrada{
+        margin: 10%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .modalNuevo{
+display: block;
+
+  }
+  .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+.modalNuevo {
+ display: none;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+    .modal-body {padding: 2px 16px;}
+
+    .modal-header {
+  padding: 2px 16px;
+  background-color: #9fd3c7;
+  color: white;
+  justify-content: center;
+}
+
+#opcionesSegundas{
+    display: none;
+}
+#botonCierre{
+    width: 10%;
+
+}
+
+#mymodalsaldo{
+    display: none;
+}
+
+
+#botonCierre2{
+    width: 10%;
+}
+
+#formIngreseDinero{
+    display: none;
+    margin: 10%;
+        margin-left: 20%;
+        margin-right: 20%;
+}
+
+#alertIngreso{
+    display: none;
+}
+
+#nuevoSaldoIngresando{
+    display: none;
+}
+
+#formRetirarDinero{
+    display: none;
+    margin: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#nuevoSaldoRetirado{
+    display: none;
+}
+
+#botonCierre2{
+    width: 10%;
+
+}
+
+#botonCierre3{
+    width: 10%;
+
+}
+
+#botonCierre4{
+    width: 10%;
+
+}
+#botonCierreOpciones{
+    margin-top: 50px;
+    margin-left: 500px;
+}
+
+#energenciaIngreso{
+display: none;
+}
+#botonCierreEmergenciaIngreso{
+  width: 10%;
+}
+#energenciaRetiro{
+  display: none;
+}
+#botonCierreEmergenciaRetiro{
+  width: 10%;
+}
+
+ </style>
+
+
+</head>
+
+
+<body>
+  <div class="Encabezado">
+ <img class ="imagenEncabezado" src="https://images.vexels.com/media/users/3/129288/isolated/preview/52e06e07244a3590366669665ea540e3-icono-de-circulo-de-banco-3.png"  width="100" height="66">
+ <h1 id="tituloPrincipal">Welcome to your bank</h1>
+  </div>
+
+  <!--Parte formulario de ingreso-->
+
+
+  <form id="formularioEntrada">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input type="texto" class="form-control" id="nombre" aria-describedby="emailHelp" required>
+       </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" required>
+      <div id="emailHelp" class="form-text">We'll never share your password with anyone else.</div>
+    </div>
+    <button id="boton" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+ <!--Modal que aparecen cuando los datos son incorrectos-->
+
+
+ <div class="modalNuevo" id="mymodal">
+    <div class="modal-content">
+        <div class="modal-header">
+          <span id="botonCierre" class="close">&times;</span>
+          <h2>Alert</h2>
+        </div>
+        <div class="modal-body">
+          <p>Incorrect data. Try again!</p>
+         
+        </div>
+         </div>
+
+ </div>
+
+  <!--segunda pantalla principal para consultar saldo-->
+
+  <section id="opcionesSegundas">
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <h2>Choose an option:
+    </h2>
+    <button id ="consultarSaldo" class="btn btn-primary" type="button">Check Balance</button>
+    <button  id ="ingresarDinero" class="btn btn-primary" type="button">Deposit Money</button>
+    <button id="retirarDinero" class="btn btn-primary"  type="button">Withdraw Money</button>
+  </div>
+
+  <button id="botonCierreOpciones" type="button" class="btn btn-outline-success">EXIT</button>
+  </section>
+
+  <!--Modal para el saldo-->
+  <div class="modalsaldo" id="mymodalsaldo">
+    <div class="modal-content">
+        <div class="modal-header">
+          <span id="botonCierre2" class="close">&times;</span>
+          <h2>Balance</h2>
+        </div>
+        <div class="modal-body">
+          <p id="mostrarSaldo"></p>
+         
+        </div>
+         </div>
+
+ </div>
+
+
+ <!--Form para ingresar dinero-->
+ <form id='formIngreseDinero'>
+    <h3>Enter your money</h3>
+    <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <span class="input-group-text">0.00</span>
+        <input id='valorIngresado' type="number" min="0" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required>
+      </div>
+        <button type="submit" class="btn btn-primary">send</button>
+        <button id='backIngreso' type="button" class="btn btn-primary">Back</button>
+  </form>
+<!--modal alert se paso del monto-->
+
+
+ 
+  <!--Modal para el mostrar saldo ingresado-->
+  <div class="modalsaldo" id="nuevoSaldoIngresando">
+    <div class="modal-content">
+        <div class="modal-header">
+          <span id="botonCierre3" class="close">&times;</span>
+          <h2>Balance</h2>
+        </div>
+        <div class="modal-body">
+          <p id="mostrarSaldoIngresando"></p>
+         
+        </div>
+    </div>
+
+ </div>
+
+<!-- saludo de emergencia valor no permitido al ingresar
+-->
+
+<div class="modalNuevo" id="energenciaIngreso">
+  <div class="modal-content">
+      <div class="modal-header">
+        <span id="botonCierreEmergenciaIngreso" class="close">&times;</span>
+        <h2>Alert</h2>
+      </div>
+      <div class="modal-body">
+        <p id="AlertaIngreso"></p>
+       
+      </div>
+       </div>
+
+</div>
+
+
+
+
+
+
+
+  <!--Form para retirar dinero-->
+  <form id='formRetirarDinero'>
+    <h3>Withdraw your money</h3>
+    <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <span class="input-group-text">0.00</span>
+        <input id='valorRetirado' type="number" min="0" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" required>
+      </div>
+        <button type="submit" class="btn btn-primary">send</button>
+        <button id='backRetiro' type="button" class="btn btn-primary">Back</button>
+  </form>
+  
+<!--Modal para el mostrar saldo retirado-->
+<div class="modalsaldo" id="nuevoSaldoRetirado">
+    <div class="modal-content">
+        <div class="modal-header">
+          <span id="botonCierre4" class="close">&times;</span>
+          <h2>Balance</h2>
+        </div>
+        <div class="modal-body">
+          <p id="mostrarSaldoRetirado"></p>
+         
+        </div>
+    </div>
+
+ </div>
+ 
+
+<!-- saludo de emergencia valor no permitido al retirar
+-->
+
+<div class="modalNuevo" id="energenciaRetiro">
+  <div class="modal-content">
+      <div class="modal-header">
+        <span id="botonCierreEmergenciaRetiro" class="close">&times;</span>
+        <h2>Alert</h2>
+      </div>
+      <div class="modal-body">
+        <p id="AlertaRetiro"></p>
+       
+      </div>
+       </div>
+
+</div>
+
+
+ <!--script para vincularse-->
+
+
+ <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
